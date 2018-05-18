@@ -1,6 +1,9 @@
 <div class="banner-content">
   <div class="banner" style="background: url('https://images.pexels.com/photos/878992/pexels-photo-878992.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') no-repeat center center;">
-  <h1>Fancy cocktails</h1>
+<p>
+  <span id="banner-typed-text"></span>
+</p>
+
   </div>
 </div>
 <div class="container">
@@ -9,7 +12,9 @@
         <!-- insert <div class="card"> -->
       <% @cocktails.each do |cocktail| %>
         <div class="col-xs-12 col-sm-4" style="margin-bottom: 20px;">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.pexels.com/photos/605408/pexels-photo-605408.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
+          <div class="card"
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+            url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>')">
             <div class="card-category"></div>
             <div class="card-description">
             <p class="cocktail-name"><%= cocktail.name %></p>
@@ -21,5 +26,3 @@
     </div>
   </div>
 </div>
-
-

@@ -1,15 +1,20 @@
 <div class="container">
   <h1><%= @cocktail.name %></h1>
-
   <% @cocktail.doses.each do |dose| %>
   <ul>
     <li>
-      <p><%= dose.description %> - <%= dose.ingredient.name %></p>
+      <p><%= dose.description %> - <%= dose.ingredient.name %>
+        <%= link_to 'delete', dose_path(dose), method: :delete %></p>
     </li>
   </ul>
-  <%= link_to 'delete', dose_path(dose), method: :delete %>
   <% end %>
-
-  <%= link_to 'back', cocktails_path %>
-  <%= link_to 'add dose', new_cocktail_dose_path(@cocktail) %>
+  <%  if @cocktail.photo.present? %>
+  <%= cl_image_tag @cocktail.photo, height: 500, width: 500, crop: :fill %>
+  <% end %>
+  <div>
+    <br>
+    <%= link_to 'add a new dose', new_cocktail_dose_path(@cocktail) %> -
+    <%= link_to 'delete this cocktail', cocktail_path(@cocktail), method: :delete %> -
+    <%= link_to 'back', cocktails_path %>
+  </div>
 </div>
